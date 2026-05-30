@@ -3,6 +3,7 @@ const cors = require('cors');
 const dotenv = require('dotenv');
 const db = require('./config/db');
 const authRoutes = require('./routes/authRoutes');
+const gradesRoutes = require('./routes/gradesRoutes');
 
 // Load environment variables
 dotenv.config();
@@ -15,6 +16,7 @@ app.use(express.json());
 
 // Routes
 app.use('/api/auth', authRoutes);
+app.use('/api/grades', gradesRoutes);
 
 // Test route
 app.get('/', (req, res) => {
