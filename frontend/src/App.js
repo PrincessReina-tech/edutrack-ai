@@ -5,6 +5,12 @@ import Register from './pages/Register';
 import Dashboard from './pages/Dashboard';
 import Grades from './pages/Grades';
 import AdminDashboard from './pages/AdminDashboard';
+import Prediction from './pages/Prediction';
+import Home from './pages/Home';
+import './App.css';
+import AddStudent from './pages/AddStudent';
+import CourseManagement from './pages/CourseManagement';
+import EditStudent from './pages/EditStudent';
 
 // Protected route component
 const ProtectedRoute = ({ children, allowedRole }) => {
@@ -21,7 +27,7 @@ function App() {
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Navigate to="/login" />} />
+        <Route path="/" element={<Home />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Register />} />
         <Route path="/dashboard" element={
@@ -34,11 +40,19 @@ function App() {
             <Grades />
           </ProtectedRoute>
         } />
+        <Route path="/prediction" element={
+          <ProtectedRoute allowedRole="student">
+           <Prediction />
+          </ProtectedRoute>
+        } />
         <Route path="/admin" element={
           <ProtectedRoute allowedRole="admin">
             <AdminDashboard />
           </ProtectedRoute>
         } />
+        <Route path="/admin/add-student" element={<AddStudent />} />
+        <Route path="/admin/courses" element={<CourseManagement />} />
+        <Route path="/admin/edit-student/:id" element={<EditStudent />} />
       </Routes>
     </Router>
   );

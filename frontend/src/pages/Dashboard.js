@@ -167,14 +167,21 @@ function Dashboard() {
             </div>
             <p style={styles.metricSub}>Based on GPA</p>
           </div>
-          <div style={styles.metricCard}>
+         <div
+            style={{ ...styles.metricCard, cursor: 'pointer' }}
+            onClick={() => navigate('/prediction')}
+          >
             <p style={styles.metricLabel}>Predicted GPA</p>
-            <p style={styles.metricValue}>
-              {gpaData.gpa > 0
-                ? (parseFloat(gpaData.gpa) + 0.1).toFixed(2)
-                : 'N/A'}
+            <p style={{
+              ...styles.metricValue,
+              background: 'linear-gradient(90deg, #378ADD, #0F9B8E)',
+              WebkitBackgroundClip: 'text',
+              WebkitTextFillColor: 'transparent',
+              fontSize: '20px',
+            }}>
+              View Prediction →
             </p>
-            <p style={styles.metricSub}>AI estimate</p>
+            <p style={styles.metricSub}>Click to see AI estimate</p>
           </div>
         </div>
 

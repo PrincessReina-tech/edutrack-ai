@@ -4,6 +4,10 @@ const dotenv = require('dotenv');
 const db = require('./config/db');
 const authRoutes = require('./routes/authRoutes');
 const gradesRoutes = require('./routes/gradesRoutes');
+const predictionRoutes = require('./routes/predictionRoutes');
+const adminRoutes = require('./routes/adminRoutes');
+const courseRoutes = require('./routes/courseRoutes');
+const studentAdminRoutes = require('./routes/studentAdminRoutes');
 
 // Load environment variables
 dotenv.config();
@@ -17,6 +21,10 @@ app.use(express.json());
 // Routes
 app.use('/api/auth', authRoutes);
 app.use('/api/grades', gradesRoutes);
+app.use('/api/prediction', predictionRoutes);
+app.use('/api/admin', adminRoutes);
+app.use('/api/admin/courses', courseRoutes);
+app.use('/api/admin', studentAdminRoutes);
 
 // Test route
 app.get('/', (req, res) => {
