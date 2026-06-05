@@ -26,7 +26,7 @@ function EditStudent() {
   const fetchStudent = async () => {
     try {
       const res = await axios.get(
-        `http://localhost:5000/api/admin/students/${id}`,
+        `https://edutrack-ai-production-502d.up.railway.app/api/admin/students/${id}`,
         { headers }
       );
 
@@ -52,7 +52,7 @@ function EditStudent() {
   const updateStudent = async () => {
     try {
       await axios.put(
-        `http://localhost:5000/api/admin/students/${id}`,
+        `https://edutrack-ai-production-502d.up.railway.app/api/admin/students/${id}`,
         student,
         { headers }
       );

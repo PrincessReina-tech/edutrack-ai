@@ -15,7 +15,7 @@ function AddStudent() {
 
     try {
       await axios.post(
-        'http://localhost:5000/api/admin/students',
+        'https://edutrack-ai-production-502d.up.railway.app/api/admin/students',
         { name, email, password },
         { headers: { authorization: `Bearer ${token}` } }
       );

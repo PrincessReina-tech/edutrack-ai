@@ -41,8 +41,8 @@ const [showEditModal, setShowEditModal] = useState(false);
   const fetchData = async () => {
     try {
       const [studentsRes, statsRes] = await Promise.all([
-        axios.get('http://localhost:5000/api/admin/students', { headers }),
-        axios.get('http://localhost:5000/api/admin/overview', { headers }),
+        axios.get('https://edutrack-ai-production-502d.up.railway.app/api/admin/students', { headers }),
+        axios.get('https://edutrack-ai-production-502d.up.railway.app/api/admin/overview', { headers }),
       ]);
       setStudents(studentsRes.data);
       setStats(statsRes.data);
@@ -58,7 +58,7 @@ const [showEditModal, setShowEditModal] = useState(false);
     setCourseLoading(true);
 
     const res = await axios.get(
-      'http://localhost:5000/api/admin/courses',
+      'https://edutrack-ai-production-502d.up.railway.app/api/admin/courses',
       { headers }
     );
 
@@ -74,7 +74,7 @@ const [showEditModal, setShowEditModal] = useState(false);
   const fetchStudentDetails = async (id) => {
     try {
       const res = await axios.get(
-        `http://localhost:5000/api/admin/students/${id}`,
+        `https://edutrack-ai-production-502d.up.railway.app/api/admin/students/${id}`,
         { headers }
       );
       setSelectedStudent(res.data);
@@ -96,7 +96,7 @@ const [showEditModal, setShowEditModal] = useState(false);
   const handleAddStudent = async () => {
   try {
     await axios.post(
-      'http://localhost:5000/api/admin/students',
+      'https://edutrack-ai-production-502d.up.railway.app/api/admin/students',
       newStudent,
       { headers }
     );
@@ -121,7 +121,7 @@ const [showEditModal, setShowEditModal] = useState(false);
 
   try {
     await axios.delete(
-      `http://localhost:5000/api/admin/students/${id}`,
+      `https://edutrack-ai-production-502d.up.railway.app/api/admin/students/${id}`,
       { headers }
     );
 
@@ -137,7 +137,7 @@ const [showEditModal, setShowEditModal] = useState(false);
 const updateStudent = async () => {
   try {
     await axios.put(
-      `http://localhost:5000/api/admin/students/${editStudent.id}`,
+      `https://edutrack-ai-production-502d.up.railway.app/api/admin/students/${editStudent.id}`,
       {
         name: editStudent.name,
         email: editStudent.email,

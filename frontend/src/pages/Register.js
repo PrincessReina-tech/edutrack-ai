@@ -40,7 +40,7 @@ function Register() {
     accessCode: adminData.accessCode,
   };
 
-      const res = await axios.post('http://localhost:5000/api/auth/register', payload);
+      const res = await axios.post('https://edutrack-ai-production-502d.up.railway.app/api/auth/register', payload);
       setIsError(false);
       setMessage(res.data.message);
       setTimeout(() => navigate('/login'), 2000);

@@ -53,8 +53,8 @@ function Dashboard() {
       try {
         const headers = { authorization: `Bearer ${token}` };
         const [gpaRes, gradesRes] = await Promise.all([
-          axios.get('http://localhost:5000/api/grades/my-gpa', { headers }),
-          axios.get('http://localhost:5000/api/grades/my-grades', { headers }),
+          axios.get('https://edutrack-ai-production-502d.up.railway.app/api/grades/my-gpa', { headers }),
+          axios.get('https://edutrack-ai-production-502d.up.railway.app/api/grades/my-grades', { headers }),
         ]);
         setGpaData(gpaRes.data);
         setGrades(gradesRes.data);

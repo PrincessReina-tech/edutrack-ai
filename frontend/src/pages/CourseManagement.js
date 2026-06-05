@@ -26,7 +26,7 @@ const [confirmModal, setConfirmModal] = useState({
   const fetchCourses = async () => {
     try {
       const res = await axios.get(
-        'http://localhost:5000/api/admin/courses',
+        'https://edutrack-ai-production-502d.up.railway.app/api/admin/courses',
         { headers }
       );
 
@@ -54,14 +54,14 @@ const addCourse = async () => {
 
     if (editingCourse) {
       await axios.put(
-        `http://localhost:5000/api/admin/courses/${editingCourse.id}`,
+        `https://edutrack-ai-production-502d.up.railway.app/api/admin/courses/${editingCourse.id}`,
         newCourse,
         { headers }
       );
       toast.success('Course updated successfully');
     } else {
       await axios.post(
-        'http://localhost:5000/api/admin/courses',
+        'https://edutrack-ai-production-502d.up.railway.app/api/admin/courses',
         newCourse,
         { headers }
       );
@@ -98,7 +98,7 @@ const addCourse = async () => {
     setDeletingId(confirmModal.courseId);
 
     await axios.delete(
-      `http://localhost:5000/api/admin/courses/${confirmModal.courseId}`,
+      `https://edutrack-ai-production-502d.up.railway.app/api/admin/courses/${confirmModal.courseId}`,
       { headers }
     );
 

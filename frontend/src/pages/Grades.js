@@ -27,8 +27,8 @@ function Grades() {
   const fetchAll = async () => {
     try {
       const [coursesRes, gradesRes] = await Promise.all([
-        axios.get('http://localhost:5000/api/grades/courses', { headers }),
-        axios.get('http://localhost:5000/api/grades/my-grades', { headers }),
+        axios.get('https://edutrack-ai-production-502d.up.railway.app/api/grades/courses', { headers }),
+        axios.get('https://edutrack-ai-production-502d.up.railway.app/api/grades/my-grades', { headers }),
       ]);
       setCourses(coursesRes.data);
       setGrades(gradesRes.data);
@@ -47,7 +47,7 @@ function Grades() {
     e.preventDefault();
     try {
       const res = await axios.post(
-        'http://localhost:5000/api/grades/add',
+        'https://edutrack-ai-production-502d.up.railway.app/api/grades/add',
         formData,
         { headers }
       );
@@ -66,7 +66,7 @@ function Grades() {
   const handleDelete = async (id) => {
     try {
       await axios.delete(
-        `http://localhost:5000/api/grades/delete/${id}`,
+        `https://edutrack-ai-production-502d.up.railway.app/api/grades/delete/${id}`,
         { headers }
       );
       setIsError(false);

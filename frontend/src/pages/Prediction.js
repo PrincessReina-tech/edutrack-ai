@@ -23,7 +23,7 @@ function Prediction() {
   const fetchPrediction = async () => {
     try {
       setLoading(true);
-      const res = await axios.get('http://localhost:5000/api/prediction/predict', {
+      const res = await axios.get('https://edutrack-ai-production-502d.up.railway.app/api/prediction/predict', {
         headers: { authorization: `Bearer ${token}` },
       });
       setPrediction(res.data);
