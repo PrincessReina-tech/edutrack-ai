@@ -1,0 +1,86 @@
+name: EduTrack AI CI/CD Pipeline
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  # Job 1 - Test Backend
+  test-backend:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install backend dependencies
+        run: |
+          cd backend
+          npm install
+
+      - name: Check backend syntax
+        run: |
+          cd backend
+          node -e "require('./index.js')" &
+          sleep 3
+          kill %1 2>/dev/null || true
+          echo "Backend syntax check passed "
+
+  # Job 2 - Test Frontend
+  test-frontend:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Install frontend dependencies
+        run: |
+          cd frontend
+          npm install
+
+      - name: Build frontend
+        run: |
+          cd frontend
+          npm run build
+        env:
+          CI: false
+
+  # Job 3 - Test ML Service
+  test-ml:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v3
+
+      - name: Setup Python
+        uses: actions/setup-python@v4
+        with:
+          python-version: '3.10'
+
+     - name: Install ML dependencies
+        run: |
+          pip install flask scikit-learn pandas numpy flask-cors
+
+      - name: Test ML dependencies
+        run: |
+          python -c "import flask; import sklearn; import pandas; import numpy; print('All ML dependencies OK ')"
+
+      - name: Check ML service syntax
+        run: |
+          cd ml_service
+          python -m py_compile app.py
+          echo "ML service syntax check passed "

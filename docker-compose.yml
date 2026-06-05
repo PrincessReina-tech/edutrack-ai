@@ -1,0 +1,69 @@
+version: '3.8'
+
+services:
+  # MySQL Database
+  db:
+    image: mysql:8.0
+    container_name: edutrack_db
+    environment:
+      MYSQL_ROOT_PASSWORD: Root20@_2006
+      MYSQL_DATABASE: edutrack
+    ports:
+      - "3306:3306"
+    volumes:
+      - mysql_data:/var/lib/mysql
+    networks:
+      - edutrack_network
+    healthcheck:
+      test: ["CMD", "mysqladmin", "ping", "-h", "localhost"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # Backend Service
+  backend:
+    build: ./backend
+    container_name: edutrack_backend
+    ports:
+      - "5000:5000"
+    environment:
+      PORT: 5000
+      DB_HOST: db
+      DB_USER: root
+      DB_PASSWORD: Root20@_2006
+      DB_NAME: edutrack
+      JWT_SECRET: edutrack_secret_key_2024
+      ADMIN_ACCESS_CODE: EDUTRACK_ADMIN_2024
+      ML_SERVICE_URL: http://ml_service:5001
+    depends_on:
+      db:
+        condition: service_healthy
+    networks:
+      - edutrack_network
+
+  # ML Service
+  ml_service:
+    build: ./ml_service
+    container_name: edutrack_ml
+    ports:
+      - "5001:5001"
+    networks:
+      - edutrack_network
+
+  # Frontend Service
+  frontend:
+    build: ./frontend
+    container_name: edutrack_frontend
+    ports:
+      - "3000:3000"
+    depends_on:
+      - backend
+    networks:
+      - edutrack_network
+
+networks:
+  edutrack_network:
+    driver: bridge
+
+volumes:
+  mysql_data:
