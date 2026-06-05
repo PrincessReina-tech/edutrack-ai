@@ -9,14 +9,14 @@ const register = (req, res) => {
   // If registering as admin, validate access code
   if (role === 'admin') {
     if (!accessCode || accessCode !== process.env.ADMIN_ACCESS_CODE) {
-      return res.status(403).json({ message: 'Invalid admin access code ❌' });
+      return res.status(403).json({ message: 'Invalid admin access code ' });
     }
   }
 
   // Check if user already exists
   db.query('SELECT * FROM users WHERE email = ?', [email], (err, results) => {
     if (err) return res.status(500).json({ message: 'Database error' });
-    if (results.length > 0) return res.status(400).json({ message: 'Email already exists ❌' });
+    if (results.length > 0) return res.status(400).json({ message: 'Email already exists ' });
 
     // Encrypt password
     const hashedPassword = bcrypt.hashSync(password, 10);
@@ -27,7 +27,7 @@ const register = (req, res) => {
       [name, email, hashedPassword, role || 'student'],
       (err, results) => {
         if (err) return res.status(500).json({ message: 'Error creating user' });
-        res.status(201).json({ message: 'Account created successfully ✅' });
+        res.status(201).json({ message: 'Account created successfully ' });
       }
     );
   });
@@ -40,13 +40,13 @@ const login = (req, res) => {
   // Find user by email
   db.query('SELECT * FROM users WHERE email = ?', [email], (err, results) => {
     if (err) return res.status(500).json({ message: 'Database error' });
-    if (results.length === 0) return res.status(400).json({ message: 'User not found ❌' });
+    if (results.length === 0) return res.status(400).json({ message: 'User not found ' });
 
     const user = results[0];
 
     // Check password
     const isMatch = bcrypt.compareSync(password, user.password);
-    if (!isMatch) return res.status(400).json({ message: 'Invalid password ❌' });
+    if (!isMatch) return res.status(400).json({ message: 'Invalid password ' });
 
     // Generate JWT token
     const token = jwt.sign(
@@ -56,7 +56,7 @@ const login = (req, res) => {
     );
 
     res.json({
-      message: 'Login successful ✅',
+      message: 'Login successful ',
       token,
       user: {
         id: user.id,

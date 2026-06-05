@@ -57,7 +57,7 @@ function EditStudent() {
         { headers }
       );
 
-      alert('Student updated successfully ✅');
+      alert('Student updated successfully ');
       navigate('/admin'); // go back to dashboard
 
     } catch (err) {

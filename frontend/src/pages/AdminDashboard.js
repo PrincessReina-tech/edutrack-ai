@@ -149,7 +149,7 @@ const updateStudent = async () => {
     fetchData();
 
     // SUCCESS MESSAGE
-    toast.success('Student updated successfully ✅');
+    toast.success('Student updated successfully ');
   } catch (err) {
     console.error(err);
     toast.error('Failed to update student');

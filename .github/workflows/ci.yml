@@ -31,7 +31,7 @@ jobs:
           node -e "require('./index.js')" &
           sleep 3
           kill %1 2>/dev/null || true
-          echo "Backend syntax check passed ✅"
+          echo "Backend syntax check passed "
 
   # Job 2 - Test Frontend
   test-frontend:
@@ -77,10 +77,10 @@ jobs:
 
       - name: Test ML dependencies
         run: |
-          python -c "import flask; import sklearn; import pandas; import numpy; print('All ML dependencies OK ✅')"
+          python -c "import flask; import sklearn; import pandas; import numpy; print('All ML dependencies OK ')"
 
       - name: Check ML service syntax
         run: |
           cd ml_service
           python -m py_compile app.py
-          echo "ML service syntax check passed ✅"
+          echo "ML service syntax check passed "

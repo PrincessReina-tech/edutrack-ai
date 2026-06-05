@@ -35,7 +35,7 @@ const addGrade = (req, res) => {
 
       if (results.length > 0) {
         return res.status(400).json({
-          message: 'Grade already exists for this course and semester ❌',
+          message: 'Grade already exists for this course and semester ',
         });
       }
 
@@ -48,7 +48,7 @@ const addGrade = (req, res) => {
           }
 
           res.status(201).json({
-            message: 'Grade added successfully ✅',
+            message: 'Grade added successfully ',
             grade,
           });
         }
@@ -153,12 +153,12 @@ const deleteGrade = (req, res) => {
 
       if (results.affectedRows === 0) {
         return res.status(404).json({
-          message: 'Grade not found ❌',
+          message: 'Grade not found ',
         });
       }
 
       res.json({
-        message: 'Grade deleted successfully ✅',
+        message: 'Grade deleted successfully',
       });
     }
   );

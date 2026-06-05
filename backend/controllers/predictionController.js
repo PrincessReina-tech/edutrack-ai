@@ -16,7 +16,7 @@ const getPrediction = (req, res) => {
 
       if (results.length === 0) {
         return res.status(400).json({
-          message: 'No grades found. Please add grades first ❌'
+          message: 'No grades found. Please add grades first '
         });
       }
 
@@ -128,7 +128,7 @@ if (correctedRisk === 'Low') {
       } catch (mlErr) {
         console.error('ML Service error:', mlErr.message, mlErr.code, mlErr.response?.data);
         return res.status(500).json({
-          message: 'ML service unavailable. Make sure Flask is running ❌'
+          message: 'ML service unavailable. Make sure Flask is running '
         });
       }
     }

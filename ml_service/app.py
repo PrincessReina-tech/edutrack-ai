@@ -16,7 +16,7 @@ with open('risk_model.pkl', 'rb') as f:
 with open('label_encoder.pkl', 'rb') as f:
     le = pickle.load(f)
 
-print('✅ Models loaded successfully!')
+print('Models loaded successfully!')
 
 FEATURE_NAMES = ['avg_score', 'attendance', 'participation', 'resources', 'total_credit_hours']
 
@@ -62,7 +62,7 @@ def get_recommendation(risk, gpa):
 
 @app.route('/', methods=['GET'])
 def home():
-    return jsonify({'message': 'EduTrack AI ML Service is running! ✅'})
+    return jsonify({'message': 'EduTrack AI ML Service is running! '})
 
 
 @app.route('/predict', methods=['POST'])
@@ -135,7 +135,7 @@ def predict():
 
     except Exception as e:
         import traceback
-        print('❌ Prediction error:', traceback.format_exc())
+        print('Prediction error:', traceback.format_exc())
         return jsonify({'error': str(e)}), 500
 
 

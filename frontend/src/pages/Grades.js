@@ -70,7 +70,7 @@ function Grades() {
         { headers }
       );
       setIsError(false);
-      setMessage('Grade deleted successfully ✅');
+      setMessage('Grade deleted successfully');
       fetchAll();
       setTimeout(() => setMessage(''), 3000);
     } catch (err) {

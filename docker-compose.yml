@@ -34,7 +34,7 @@ services:
       DB_NAME: edutrack
       JWT_SECRET: edutrack_secret_key_2024
       ADMIN_ACCESS_CODE: EDUTRACK_ADMIN_2024
-      ML_SERVICE_URL: http://ml-service:5001
+      ML_SERVICE_URL: http://ml_service:5001
     depends_on:
       db:
         condition: service_healthy
@@ -42,8 +42,8 @@ services:
       - edutrack_network
 
   # ML Service
-  ml-service:
-    build: ./ml-service
+  ml_service:
+    build: ./ml_service
     container_name: edutrack_ml
     ports:
       - "5001:5001"

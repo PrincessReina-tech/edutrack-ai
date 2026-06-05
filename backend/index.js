@@ -28,11 +28,11 @@ app.use('/api/admin', studentAdminRoutes);
 
 // Test route
 app.get('/', (req, res) => {
-  res.json({ message: 'EduTrack AI Backend is running! ✅' });
+  res.json({ message: 'EduTrack AI Backend is running! ' });
 });
 
 // Start server
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => {
-  console.log(`Server running on port ${PORT} ✅`);
+  console.log(`Server running on port ${PORT} `);
 });

@@ -14,7 +14,7 @@ import pickle
 # Load dataset
 df = pd.read_csv('xAPI-Edu-Data.csv')
 
-print(f'✅ Dataset loaded: {len(df)} records')
+print(f'Dataset loaded: {len(df)} records')
 print(f'Columns: {df.columns.tolist()}')
 
 # ============================================================
@@ -88,7 +88,7 @@ df[[
     'avg_score', 'attendance', 'participation',
     'resources', 'gpa', 'risk_level'
 ]].to_csv('processed_dataset.csv', index=False)
-print('\n✅ Processed dataset saved: processed_dataset.csv')
+print('\n Processed dataset saved: processed_dataset.csv')
 
 # ============================================================
 # TRAIN ML MODELS
@@ -106,7 +106,7 @@ X_train, X_test, y_train, y_test = train_test_split(
 gpa_model = RandomForestRegressor(n_estimators=100, random_state=42)
 gpa_model.fit(X_train, y_train)
 gpa_score = gpa_model.score(X_test, y_test)
-print(f'\n✅ GPA Model R² Score: {gpa_score:.2f}')
+print(f'\n GPA Model R² Score: {gpa_score:.2f}')
 
 # --- TRAIN RISK CLASSIFIER ---
 y_risk = df['risk_level']
@@ -120,7 +120,7 @@ X_train2, X_test2, y_train2, y_test2 = train_test_split(
 risk_model = RandomForestClassifier(n_estimators=100, random_state=42)
 risk_model.fit(X_train2, y_train2)
 risk_score = risk_model.score(X_test2, y_test2)
-print(f'✅ Risk Model Accuracy: {risk_score:.2f}')
+print(f' Risk Model Accuracy: {risk_score:.2f}')
 
 # --- SAVE MODELS ---
 with open('gpa_model.pkl', 'wb') as f:
@@ -136,7 +136,7 @@ with open('label_encoder.pkl', 'wb') as f:
 with open('features.pkl', 'wb') as f:
     pickle.dump(features, f)
 
-print('\n✅ All models saved successfully!')
+print('\nAll models saved successfully!')
 print(f'Risk Classes: {le.classes_}')
 print('\nModel files created:')
 print('  - gpa_model.pkl')
