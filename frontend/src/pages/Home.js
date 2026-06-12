@@ -3,7 +3,7 @@ import { useNavigate } from 'react-router-dom';
 
 function AnimatedCounter({ target, duration, suffix, startCounting }) {
   const [count, setCount] = useState(0);
-  const hasRun = useRef(false);
+  
 
   useEffect(() => {
   if (!startCounting) {

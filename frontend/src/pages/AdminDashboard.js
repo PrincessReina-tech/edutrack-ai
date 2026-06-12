@@ -24,7 +24,7 @@ const [newStudent, setNewStudent] = useState({
   password: '',
 });
 const [showCourses, setShowCourses] = useState(false);
-const [showEditStudent, setShowEditStudent] = useState(false);
+
 const [editStudent, setEditStudent] = useState({ id: null, name: '', email: '' });
 const [showEditModal, setShowEditModal] = useState(false);
 

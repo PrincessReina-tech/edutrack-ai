@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import {
-  RadialBarChart, RadialBar, ResponsiveContainer,
+  ResponsiveContainer,
   PieChart, Pie, Cell, Tooltip, Legend
 } from 'recharts';
 

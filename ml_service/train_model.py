@@ -78,10 +78,10 @@ df['total_credit_hours'] = 20
 
 print(f'\n📊 Dataset Summary:')
 print(f'Average score: {df["avg_score"].mean():.1f}')
-print(f'Average GPA: {df["gpa"].mean():.2f}')
+print(f'Average GPA: {df["gpa"].mean():.2f}')''''
 print(f'Average attendance: {df["attendance"].mean():.1f}%')
 print(f'\nRisk Distribution:')
-print(df['risk_level'].value_counts())
+print(df['risk_level'].value_counts())]]
 
 # Save processed dataset as CSV
 df[[
